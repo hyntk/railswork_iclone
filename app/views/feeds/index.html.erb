@@ -1,0 +1,19 @@
+<h1>ブログ一覧</h1>
+
+<table>
+  <tr>
+    <th>画像</th>
+    <th>コメント</th>
+  </tr>
+
+<% @feeds.each do |feed| %>
+  <tr>
+    <td><%= feed.image %></td>
+    <td><%= feed.content %></td>
+    <td><%= link_to "ブログを編集する", edit_feed_path(feed.id) %></td>
+  </tr>
+<% end %>
+
+<%= link_to '新しくブログを投稿する', new_feed_path %>
+
+</table>
