@@ -10,8 +10,8 @@
   <tr>
     <td><%= feed.image %></td>
     <td><%= feed.content %></td>
-    <td><%= link_to "ブログを編集する", edit_feed_path(feed.id) %></td>
-    <td><%= link_to 'ブログを削除する', feed_path(feed.id), method: :delete %></td>
+    <td><%= link_to "ブログを編集する", edit_feed_path(feed.id),data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to 'ブログを削除する', feed_path(feed.id), method: :delete ,data: { confirm: '本当に編集していいですか？' } %></td>
   </tr>
 <% end %>
 
