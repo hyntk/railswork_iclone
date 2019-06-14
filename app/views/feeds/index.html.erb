@@ -11,6 +11,7 @@
     <td><%= feed.image %></td>
     <td><%= feed.content %></td>
     <td><%= link_to "ブログを編集する", edit_feed_path(feed.id) %></td>
+    <td><%= link_to 'ブログを削除する', feed_path(feed.id), method: :delete %></td>
   </tr>
 <% end %>
 
