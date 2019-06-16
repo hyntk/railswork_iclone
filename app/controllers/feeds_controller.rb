@@ -38,7 +38,7 @@ end
   private
 
   def feed_params
-    params.require(:feed).permit(:image, :content)
+    params.require(:feed).permit(:image, :image_cache, :content)
   end
 
   def set_feed
