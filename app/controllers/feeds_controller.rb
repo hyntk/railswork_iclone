@@ -33,6 +33,10 @@ class FeedsController < ApplicationController
     redirect_to feeds_path, notice:"ブログを削除しました！"
   end
 
+  def confirm
+    @feed = Feed.new(feed_params)
+  end
+
 end
 
   private
