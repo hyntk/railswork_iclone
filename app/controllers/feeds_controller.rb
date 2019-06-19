@@ -5,12 +5,23 @@ class FeedsController < ApplicationController
   end
 
   def new
-    @feed = Feed.new
+    if params[:back]
+      @feed = Feed.new(feed_params)
+    else
+      @feed = Feed.new
+    end
   end
 
   def create
-    Feed.create(feed_params)
-    redirect_to feeds_path,notice: "ブログを作成しました！"
+    @feed = Feed.new(feed_params)
+    binding.pry
+    @feed.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+    @user = @feed.user.name
+    if @feed.save
+      redirect_to feeds_path, notice: "ブログを作成しました！"
+    else
+      redirect_to new_feed_path
+    end
   end
 
   def index
@@ -35,6 +46,8 @@ class FeedsController < ApplicationController
 
   def confirm
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+    @user = @feed.user.name
   end
 
 end
