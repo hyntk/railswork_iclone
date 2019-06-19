@@ -14,8 +14,7 @@ class FeedsController < ApplicationController
 
   def create
     @feed = Feed.new(feed_params)
-    binding.pry
-    @feed.user_id = current_user.id #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+    @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
     @user = @feed.user.name
     if @feed.save
       redirect_to feeds_path, notice: "ブログを作成しました！"
