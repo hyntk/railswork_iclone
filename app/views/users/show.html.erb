@@ -1,3 +1,12 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+
+<p><span>お気に入り登録したブログの一覧: </span>
+
+<% @favorite_feeds.each do |feed| %>
+  <hr>
+  <%=image_tag(feed.image.url) %><br>
+  <%=link_to feed.content, feed_path(feed.id) %>
+  </p>
+<% end %>
