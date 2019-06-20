@@ -23,9 +23,13 @@ class FeedsController < ApplicationController
     end
   end
 
+  def show
+    @feed = Feed.find(params[:id])
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
+  end
+
   def index
     @feeds = Feed.all
-    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
   end
 
   def edit
