@@ -2,6 +2,8 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
+<p><%= link_to "ユーザを編集する", edit_user_path(@user.id) %></p>
+
 <p><span>お気に入り登録したブログの一覧: </span>
 
 <% @favorite_feeds.each do |feed| %>

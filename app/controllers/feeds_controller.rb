@@ -1,5 +1,7 @@
 class FeedsController < ApplicationController
+  before_action :authenticate_user, only: [:index, :new]
   before_action :set_feed, only: [:edit, :update, :destroy]
+
   def index
     @feeds = Feed.all
   end
@@ -64,4 +66,11 @@ end
 
   def set_feed
     @feed = Feed.find(params[:id])
+  end
+
+  def authenticate_user
+
+    unless logged_in?
+      redirect_to sessions_new_path
+    end
   end
