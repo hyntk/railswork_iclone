@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @feed.update(user_params)
+    if @user.update(user_params)
       redirect_to user_path, notice: "ユーザーを編集しました！"
     else
       render 'edit'
