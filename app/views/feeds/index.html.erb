@@ -12,9 +12,15 @@
     <td><%= feed.content %></td>
     <td><%= feed.user.name %></td>
     <td><%= link_to '詳細を確認する', feed_path(feed.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_feed_path(feed.id),data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', feed_path(feed.id), method: :delete ,data: { confirm: '本当に編集していいですか？' } %></td>
-
+    <td>
+      <% if feed.user_id == current_user.id %>
+        <%= link_to "ブログを編集する", edit_feed_path(feed.id),data: { confirm: '本当に編集していいですか？' } %>
+      <%  end %>
+    </td>
+    <td>
+      <% if feed.user_id == current_user.id %>
+        <%= link_to 'ブログを削除する', feed_path(feed.id), method: :delete ,data: { confirm: '本当に編集していいですか？' } %></td>
+      <%  end %>
 
   </tr>
 <% end %>
