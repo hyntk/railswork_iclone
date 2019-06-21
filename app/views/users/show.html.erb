@@ -4,6 +4,15 @@
 
 <p><%= link_to "ユーザを編集する", edit_user_path(@user.id) %></p>
 
+
+<% if current_user %>
+  <% if current_user.image? %>
+    <%= image_tag(@user.image.url)%>
+  <% else %>
+    <h1>NO Image</h1>
+  <% end %>
+<% end %>
+
 <p><span>お気に入り登録したブログの一覧: </span>
 
 <% @favorite_feeds.each do |feed| %>
