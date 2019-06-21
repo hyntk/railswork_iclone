@@ -19,6 +19,7 @@ class FeedsController < ApplicationController
     @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
     @user = @feed.user.name
     if @feed.save
+      PostMailer.contact_mail(@contact).deliver
       redirect_to feeds_path, notice: "ブログを作成しました！"
     else
       redirect_to new_feed_path
