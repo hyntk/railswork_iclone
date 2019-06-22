@@ -15,11 +15,11 @@ class FeedsController < ApplicationController
   end
 
   def create
-    @feed = Feed.new(feed_params)
-    @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
-    @user = @feed.user.name
+    @feed = current_user.feeds.new(feed_params)
+    # @feed = Feed.new(feed_params)
+    # @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
     if @feed.save
-      PostMailer.contact_mail(@contact).deliver
+      PostMailer.contact_mail(@feed).deliver
       redirect_to feeds_path, notice: "ブログを作成しました！"
     else
       redirect_to new_feed_path
