@@ -3,6 +3,7 @@
 <p>メールアドレス: <%= @user.email %></p>
 
 <p><%= link_to "ユーザを編集する", edit_user_path(@user.id) %></p>
+<p><%= link_to "ブログ一覧画面へ移動する", feeds_path %></p>
 
 
 <% if current_user %>
