@@ -22,7 +22,7 @@ class FeedsController < ApplicationController
       PostMailer.contact_mail(@feed).deliver
       redirect_to feeds_path, notice: "ブログを作成しました！"
     else
-      redirect_to new_feed_path
+      render 'new'
     end
   end
 
