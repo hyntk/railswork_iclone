@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      favorite: お気に入り
+      user: ユーザー
+      feed: フィード
+    attributes:
+      favorite:
+        user_id: ユーザーID
+        feed_id: フィードID
+      user:
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
